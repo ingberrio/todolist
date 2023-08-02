@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+<div class="box" id="heading">
+  <h1>
+    <%- new Date().toLocaleString('default', {
+      month: 'long',
+      });%>-
+    <%- new Date().getDay()%>-
+    <%- new Date().getFullYear()%>
+  </h1>
+</div>
+<div class="box">
+  <% if (locals.items) { %>
+    <% items.forEach(function(item) { %>
+    <div class="item">
+      <input type="checkbox">
+      <p><%= item %></p> 
+      <% console.log(items)%> 
+    </div>
+    <% }); %>
+  <% } %>
+  <form class="item" action="/submit" method="post">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+    <button type="submit" name="list">+</button>
+  </form>
+</div>
+<%- include("partials/footer.ejs") %>

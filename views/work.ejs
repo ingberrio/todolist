@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+<div class="box" id="heading">
+  <h1>
+    <%- new Date().toLocaleString('default', {
+      month: 'long',
+      });%>-
+    <%- new Date().getDay()%>-
+    <%- new Date().getFullYear()%>
+  </h1>
+</div>
+<div class="box">
+  <% if (locals.works) { %>
+    <% works.forEach((list) => { %>
+    <div class="item">
+      <input type="checkbox">
+      <p><%= list %></p> 
+    </div>
+    <% }); %>
+  <% } %>
+  <form class="item" action="/work" method="post">
+    <input type="text" name="list" placeholder="List" autocomplete="off">
+    <button type="submit" name="send">+</button>
+  </form>
+</div>
+<%- include("partials/footer.ejs") %>
